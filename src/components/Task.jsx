@@ -18,7 +18,8 @@
           <h2>{props.task.name}</h2>
           <p>{props.task.description}</p>
           <p>Completada: {complete ? "Si" : "No"}</p>
-          <button onClick={changeTask}>Asignar</button>
+          <button onClick={changeTask}>Completar</button>
+          <button onClick={() => props.onDeleteTask(props.task.name)}>Eliminar</button>
         </div>
       );
     }

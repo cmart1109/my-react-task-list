@@ -5,7 +5,10 @@ export default function TaskList(props) {
  return(
     <div>
     {tasks.map(task => (
-    <Task key={task.id} task={task}/>)
+    <Task 
+    task={task} 
+    onDeleteTask={props.onDeleteTask} 
+    />)
     )}
     </div>
  );   
