@@ -1,14 +1,12 @@
 body {
-  background-color: darkcyan;
-  font-family: 'Courier New', Courier, monospace;
-  display: flex;
   justify-content: center;
-  align-items: center;
   margin: 40px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-
-
+.header{ 
+ text-align: initial;
+}
 #root {
   text-align: center;
 }
