@@ -1,0 +1,44 @@
+
+.buttons{
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+/* .button{
+
+} */
+
+.button.complete{
+  background-color: green;
+}
+
+.button.incomplete{
+  background-color: red;
+}
+
+
+.delete{
+  border: none;
+  cursor:pointer;
+  font-size: 16px;
+  margin: 6px;
+  padding: 2px;
+  display: flex;
+  justify-content: flex-end
+}
+
+.error-message{
+  color: red;
+  font-size: 12px;
+  font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  flex-direction: column;
+}
+
+h2{
+  font-weight: bold;
+}
+
+body{
+  background-color: white;
+}

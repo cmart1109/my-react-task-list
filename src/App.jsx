@@ -1,44 +1,46 @@
-import React, { useState, useEffect } from "react";
-import "./App.css";
-import TaskList from "./components/TaskList";
-import Header from "./components/Header";
-import TaskNew from "./components/TaskNew";
+import React from "react";
+import { Box, ChakraProvider as CP } from "@chakra-ui/react"
+import { extendTheme} from '@chakra-ui/react';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+//=========================================================================//
+import Home from "./components/routes/Home";
+import AboutUsPage from  "./components/routes/AboutUsPage";
+import { List } from "./components/routes/List";
+//=========================================================================//
+import { Menu } from "./components/Menu";
 
 
-export default function App() {
-  const [tasks, setTasks] = useState(() => {
-    const storedTasks = localStorage.getItem("tasks");
-    return storedTasks ? JSON.parse(storedTasks) : [];
-  });
-
-  
-  const addTask = (newTask) => {
-    const updatedTasks = [...tasks, newTask];
-    setTasks(updatedTasks);
-    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
-  };
-
-  
-  const deleteTask = (taskName) => {
-    const updatedTasks = tasks.filter((task) => task.name !== taskName);
-    setTasks(updatedTasks);
-    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
-  };
-
-
-  useEffect(() => {
-    const storedTasks = localStorage.getItem("tasks");
-    if (storedTasks) {
-      setTasks(JSON.parse(storedTasks));
-    }
-  }, []);
-
-  return (
-    <div>
-      <Header />
-      <p>Es hora de revisar las tareas que tenemos</p>
-      <TaskList tareas={tasks} onDeleteTask={deleteTask}/>
-      <TaskNew onAddTask={addTask} />
-    </div>
-  );
+const colors = {
+  brand: {
+    900: '#1a365d',
+    800: '#153e75',
+    700: '#2a69ac',
+  },
 }
+const theme = extendTheme({ colors })
+
+  export default function App() {
+    return (
+      <CP theme={theme}>
+        <Box
+        textAlign='center' 
+        color="teal.800"
+        p="4" 
+        bg="teal.100" 
+        width="100%" 
+        boxShadow='dark-lg'  
+        rounded='md'>
+          <Menu />
+          <Box mt={4}>
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about-us" element={<AboutUsPage />} />
+                <Route path="/list" element={<List />} />
+              </Routes>
+            </BrowserRouter>
+          </Box>
+        </Box>
+      </CP>
+    );
+  }
